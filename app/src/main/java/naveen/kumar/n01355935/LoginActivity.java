@@ -19,10 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.rey.material.drawable.CheckBoxDrawable;
 
 import io.paperdb.Paper;
-import naveen.kumar.n01355935.model.CurrentUser;
 import naveen.kumar.n01355935.model.Users;
 
 public class LoginActivity extends AppCompatActivity {
@@ -83,8 +81,9 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser(String phone, String password) {
 
         if(rememberMe.isChecked()){
-            Paper.book().write(CurrentUser.userPhone,phone);
-            Paper.book().write(CurrentUser.userPassword,password);
+            Paper.book().write("currentUserPhone",phone);
+            Paper.book().write("currentUserPassword",password);
+
         }
 
         DatabaseReference root;
