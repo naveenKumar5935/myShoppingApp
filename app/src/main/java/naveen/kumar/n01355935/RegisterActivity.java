@@ -88,6 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 if(snapshot.child("Users").child(phone).exists()){
+                    progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(),"User already exists",Toast.LENGTH_LONG).show();
                 }
                 else {
