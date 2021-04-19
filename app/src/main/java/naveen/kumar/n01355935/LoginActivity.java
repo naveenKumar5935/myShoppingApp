@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,7 +19,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rey.material.drawable.CheckBoxDrawable;
 
+import io.paperdb.Paper;
+import naveen.kumar.n01355935.model.CurrentUser;
 import naveen.kumar.n01355935.model.Users;
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText phoneET, passwordET;
     Button loginButton;
     ProgressDialog progressDialog;
+    CheckBox rememberMe;
 
 
     @Override
@@ -37,7 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         passwordET = findViewById(R.id.login_password_et);
         loginButton = findViewById(R.id.login_login_btn);
         progressDialog = new ProgressDialog(LoginActivity.this);
-
+        rememberMe = findViewById(R.id.login_checkbox);
+        Paper.init(LoginActivity.this);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +82,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginUser(String phone, String password) {
 
+        if(rememberMe.isChecked()){
+            Paper.book().write(CurrentUser.userPhone,phone);
+            Paper.book().write(CurrentUser.userPassword,password);
+        }
+
         DatabaseReference root;
         root = FirebaseDatabase.getInstance().getReference();
 
@@ -89,6 +100,8 @@ public class LoginActivity extends AppCompatActivity {
                         if(users.getPassword().equals(password)){
                             Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
+                            Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                            startActivity(intent);
                         }
                         else {
                             Toast.makeText(getApplicationContext(),"Wrong password",Toast.LENGTH_LONG).show();

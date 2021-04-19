@@ -59,7 +59,7 @@
         tools:layout_editor_absoluteX="-16dp">
 
 
-        <com.rey.material.widget.CheckBox
+        <CheckBox
             android:id="@+id/login_checkbox"
             style="@style/Material.Drawable.CheckBox"
             android:layout_width="wrap_content"
