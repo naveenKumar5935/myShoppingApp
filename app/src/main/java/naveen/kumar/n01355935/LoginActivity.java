@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     ProgressDialog progressDialog;
     CheckBox rememberMe;
+    TextView adminPanel;
 
 
     @Override
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         phoneET = findViewById(R.id.login_phone_et);
         passwordET = findViewById(R.id.login_password_et);
         loginButton = findViewById(R.id.login_login_btn);
+        adminPanel = findViewById(R.id.login_adminButtonTv);
         progressDialog = new ProgressDialog(LoginActivity.this);
         rememberMe = findViewById(R.id.login_checkbox);
         Paper.init(LoginActivity.this);
@@ -47,6 +50,18 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 progressDialog.show();
                 loginAccount(v);
+            }
+        });
+
+
+        adminPanel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginButton.setText("Admin Login");
+                adminPanel.setVisibility(View.INVISIBLE);
+
+                loginAccount(v);
+
             }
         });
 
@@ -69,12 +84,66 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
-            loginUser(phone,password);
+            if(loginButton.getText().toString().matches("Admin Login")){
+                loginAdmin(phone,password);
+            }
+            else {
+                loginUser(phone,password);
+            }
+
 
         }
 
 
 
+
+    }
+
+    private void loginAdmin(String phone, String password) {
+
+        if(rememberMe.isChecked()){
+            Paper.book().write("currentUserPhone",phone);
+            Paper.book().write("currentUserPassword",password);
+
+        }
+        DatabaseReference root;
+        root = FirebaseDatabase.getInstance().getReference();
+
+        root.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.child("admins").exists()){
+                    Users users = snapshot.child("admins").getValue(Users.class);
+
+                    if(users.getPhone().equals(phone)){
+                        if(users.getPassword().equals(password)){
+                            Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                            Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Wrong password",Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                        }
+                    }else {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(),"Wrong credentials",Toast.LENGTH_LONG).show();
+                    }
+
+                }
+                else {
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(),"User does not exists",Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 

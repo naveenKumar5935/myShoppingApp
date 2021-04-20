@@ -97,6 +97,24 @@ public class MainActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                     }
 
+                }else if(snapshot.child("admins").exists()) {
+                    Users users = snapshot.child("admins").getValue(Users.class);
+
+                    if(users.getPhone().equals(phone)){
+                        if(users.getPassword().equals(password)){
+                            Toast.makeText(getApplicationContext(),"Welcome "+users.getName(),Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                            Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Please enter the password",Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                        }
+                    }else {
+                        progressDialog.dismiss();
+                    }
+
                 }else {
                     progressDialog.dismiss();
                 }
