@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminCategoryActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="Add new Products"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="105dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageShirt"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/tshirts"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+
+            <ImageView
+                android:id="@+id/imageSports"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/sports"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+
+            <ImageView
+                android:id="@+id/imageDress"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/female_dresses"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+
+            <ImageView
+                android:id="@+id/imageSweater"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/sweather"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageGlasses"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/glasses"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+
+            <ImageView
+                android:id="@+id/imagePurse"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/purses_bags"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+
+            <ImageView
+                android:id="@+id/imageHats"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/hats"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+
+            <ImageView
+                android:id="@+id/imageShoes"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/shoess"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageHeadphones"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/headphoness"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+
+            <ImageView
+                android:id="@+id/imageLaptop"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/laptops"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+
+            <ImageView
+                android:id="@+id/imageWatches"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/watches"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+
+            <ImageView
+                android:id="@+id/imageMobiles"
+                android:layout_width="118dp"
+                android:layout_height="109dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/mobiles"
+                tools:layout_editor_absoluteX="87dp"
+                tools:layout_editor_absoluteY="299dp" />
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
